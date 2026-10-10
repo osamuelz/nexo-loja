@@ -1,0 +1,29 @@
+# Credenciais locais (publique somente o exemplo)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Ambiente Python e arquivos gerados
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+instance/
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# Editor, sistema e referências de trabalho
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+backup_stitch_original*/
+referencias/
+
