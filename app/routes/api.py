@@ -9,6 +9,7 @@ Endpoints de leitura:
 import unicodedata
 from flask import Blueprint, jsonify, request, current_app
 from sqlalchemy import or_
+from sqlalchemy.orm import joinedload
 from sqlalchemy.exc import IntegrityError
 from app.models import db, Categoria, Produto, Variante, Pedido, ItemPedido, HistoricoPedido, UsuarioAdmin, gerar_numero_pedido, gerar_token_acesso, utc_now
 from app.commands import normalizar_chave
@@ -32,10 +33,12 @@ def listar_categorias():
         .order_by(Categoria.ordem.asc(), Categoria.nome.asc())
         .all()
     )
-    return jsonify({
+    resp = jsonify({
         'sucesso': True,
         'categorias': [c.to_dict() for c in categorias]
-    }), 200
+    })
+    resp.headers['Cache-Control'] = 'public, max-age=60, s-maxage=300, stale-while-revalidate=600'
+    return resp, 200
 
 
 @api_bp.route('/produtos', methods=['GET'])
@@ -49,9 +52,10 @@ def listar_produtos():
     categoria_param = request.args.get('categoria', '').strip()
     termo_busca = (request.args.get('busca') or request.args.get('termo') or '').strip()
 
-    # Filtra produtos ativos cujas categorias também estejam ativas
+    # Filtra produtos ativos cujas categorias também estejam ativas com Eager Loading
     query = (
         Produto.query
+        .options(joinedload(Produto.variantes), joinedload(Produto.categoria_rel))
         .filter_by(ativo=True)
         .join(Categoria)
         .filter(Categoria.ativo == True)
@@ -80,11 +84,13 @@ def listar_produtos():
             or (p.categoria_rel and termo_norm in remover_acentos(p.categoria_rel.nome))
         ]
 
-    return jsonify({
+    resp = jsonify({
         'sucesso': True,
         'total': len(produtos),
         'produtos': [p.to_dict() for p in produtos]
-    }), 200
+    })
+    resp.headers['Cache-Control'] = 'public, max-age=30, s-maxage=60, stale-while-revalidate=300'
+    return resp, 200
 
 
 @api_bp.route('/produtos/<id_ou_slug>', methods=['GET'])
@@ -95,6 +101,7 @@ def detalhar_produto(id_ou_slug):
     """
     query = (
         Produto.query
+        .options(joinedload(Produto.variantes), joinedload(Produto.categoria_rel))
         .filter(Produto.ativo == True)
         .join(Categoria)
         .filter(Categoria.ativo == True)
