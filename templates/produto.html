@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Detalhes e especificações do produto na Nexo Loja Virtual." />
+  <title>Produto — Nexo</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Biblioteca Única de Ícones: Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Folha de Estilos Própria (Flask Static) -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+
+  <!-- Faixa de Aviso Superior (Ajustada para Retirada na Loja) -->
+  <aside class="top-notice-strip" aria-label="Aviso da Loja">
+    <div class="container top-notice-inner">
+      <div class="notice-pill">
+        <span class="notice-dot"></span>
+        <p>Retirada na loja física com agilidade • Pagamento presencial na retirada</p>
+      </div>
+      <div class="notice-badges">
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>Produtos Originais</span>
+        </span>
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">storefront</span>
+          <span>Atendimento no Balcão</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cabeçalho Principal -->
+  <header class="header-main" role="banner">
+    <div class="container header-inner">
+      
+      <!-- Marca / Logo -->
+      <a href="/" class="brand-link" aria-label="Página inicial Nexo">
+        <span>nexo</span><span class="brand-dot"></span>
+      </a>
+
+      <!-- Menu de Categorias e Sacola -->
+      <nav class="header-nav" aria-label="Categorias principais">
+        <a href="/?categoria=Celulares" class="nav-link">Celulares</a>
+        <a href="/?categoria=Informática" class="nav-link">Informática</a>
+        <a href="/?categoria=Eletrodomésticos" class="nav-link">Eletrodomésticos</a>
+        <a href="/?categoria=Acessórios" class="nav-link">Acessórios</a>
+        <a href="/pedidos" class="nav-link" aria-label="Meus Pedidos">
+          <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+          <span>Meus Pedidos</span>
+        </a>
+        <a href="/carrinho" class="nav-link nav-link-cart" aria-label="Acessar sacola de compras">
+          <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+          <span>Sacola</span>
+        </a>
+      </nav>
+
+      <!-- Barra de Busca (Desktop) -->
+      <div class="search-wrapper desktop-search" role="search">
+        <label for="search-input-header" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);">Buscar no catálogo</label>
+        <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+        <input
+          type="search"
+          id="search-input-header"
+          class="search-input"
+          placeholder="O que você procura hoje?"
+          onkeydown="if(event.key === 'Enter'){ window.location.href = '/?busca=' + encodeURIComponent(this.value); }"
+        />
+      </div>
+
+      <!-- Ações do Cabeçalho -->
+      <div class="header-actions">
+        <a href="/pedidos" class="btn-cart" aria-label="Meus Pedidos" title="Meus Pedidos" style="margin-right: 0.25rem;">
+          <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+        </a>
+        <a href="/carrinho" class="btn-cart" id="btn-cart-header" aria-label="Carrinho de compras">
+          <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+          <span class="cart-badge badge-hidden" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Barra de Busca para Dispositivos Móveis -->
+  <div class="mobile-search-bar">
+    <div class="container">
+      <div class="search-wrapper" role="search">
+        <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+        <input
+          type="search"
+          id="search-input-mobile"
+          class="search-input"
+          placeholder="Buscar no catálogo..."
+          onkeydown="if(event.key === 'Enter'){ window.location.href = '/?busca=' + encodeURIComponent(this.value); }"
+        />
+      </div>
+    </div>
+  </div>
+
+  <main id="conteudo-principal" class="product-detail-page">
+    <div class="container">
+      
+      <!-- Trilha de Navegação (Breadcrumb) -->
+      <nav class="breadcrumb-nav" aria-label="Navegação estrutural">
+        <a href="/">Início</a>
+        <span aria-hidden="true">/</span>
+        <a href="/" id="breadcrumb-categoria">Catálogo</a>
+        <span aria-hidden="true">/</span>
+        <span id="breadcrumb-nome" style="color: var(--color-text-primary); font-weight: 500;">Detalhes</span>
+      </nav>
+
+      <!-- Container Dinâmico Preenchido via produto.js -->
+      <div id="produto-detalhe-container" aria-live="polite">
+        <div style="padding: 4rem 1rem; text-align: center; color: var(--color-text-secondary);">
+          Carregando dados do produto do catálogo...
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Rodapé Semântico -->
+  <footer class="footer-main" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand-col">
+          <a href="/" class="brand-link">
+            <span>nexo</span><span class="brand-dot"></span>
+          </a>
+          <p class="footer-desc">
+            Tecnologia essencial com design refinado. Produtos originais com garantia e atendimento presencial.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atendimento</h4>
+          <ul class="footer-links">
+            <li><a href="/carrinho">Minha Sacola / Carrinho</a></li>
+            <li><a href="/#catalogo">Catálogo Completo</a></li>
+            <li><a href="/#faq">Dúvidas Frequentes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="/?categoria=Celulares">Celulares</a></li>
+            <li><a href="/?categoria=Informática">Informática</a></li>
+            <li><a href="/?categoria=Eletrodomésticos">Eletrodomésticos</a></li>
+            <li><a href="/?categoria=Acessórios">Acessórios</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Modalidade e Pagamento</h4>
+          <p class="footer-desc">
+            Retirada no balcão físico. Pagamento realizado presencialmente na conferência do item.
+          </p>
+          <div class="footer-badges">
+            <span class="material-symbols-outlined text-[20px]" title="Ambiente Seguro">lock</span>
+            <span class="material-symbols-outlined text-[20px]" title="Verificado">verified</span>
+            <span class="material-symbols-outlined text-[20px]" title="Segurança">shield</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Nexo Tecnologia. Todos os direitos reservados. Tecnologia essencial com design refinado.</p>
+        <p>Retirada presencial no balcão físico com conferência visual antes do pagamento.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica da Página de Detalhes -->
+  <script type="module" src="{{ url_for('static', filename='js/produto.js') }}"></script>
+</body>
+</html>
