@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "surface-container-highest": "#e4e2e4",
+        "tertiary": "#9b3f00",
+        "on-surface": "#1b1b1d",
+        "on-surface-variant": "#414753",
+        "on-tertiary": "#ffffff",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#f3f0f2",
+        "surface": "#fcf8fb",
+        "secondary": "#5e5e63",
+        "surface-container-low": "#f6f3f5",
+        "on-tertiary-fixed-variant": "#7a3000",
+        "surface-dim": "#dcd9dc",
+        "on-tertiary-container": "#fffaf9",
+        "tertiary-fixed": "#ffdbcb",
+        "on-secondary-fixed-variant": "#46464b",
+        "outline-variant": "#c1c6d6",
+        "on-tertiary-fixed": "#341000",
+        "on-error-container": "#93000a",
+        "secondary-fixed-dim": "#c7c6cb",
+        "tertiary-container": "#c25100",
+        "primary": "#0059b5",
+        "primary-container": "#0071e3",
+        "primary-fixed": "#d7e2ff",
+        "error-container": "#ffdad6",
+        "on-primary-container": "#fcfbff",
+        "on-primary-fixed-variant": "#00458f",
+        "surface-container-high": "#eae7ea",
+        "on-primary-fixed": "#001b3f",
+        "inverse-surface": "#303032",
+        "on-error": "#ffffff",
+        "on-secondary-container": "#626267",
+        "secondary-fixed": "#e3e2e7",
+        "on-secondary-fixed": "#1a1b1f",
+        "primary-fixed-dim": "#abc7ff",
+        "surface-variant": "#e4e2e4",
+        "error": "#ba1a1a",
+        "background": "#fcf8fb",
+        "surface-tint": "#005cbb",
+        "surface-container-lowest": "#ffffff",
+        "surface-container": "#f0edef",
+        "outline": "#717785",
+        "inverse-primary": "#abc7ff",
+        "surface-bright": "#fcf8fb",
+        "tertiary-fixed-dim": "#ffb693",
+        "secondary-container": "#e0dfe4",
+        "on-background": "#1b1b1d",
+        "on-primary": "#ffffff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "gutter": "1rem",
+        "space-sm": "1rem",
+        "gutter-desktop": "1.5rem",
+        "space-xl": "3rem",
+        "margin-desktop": "2rem",
+        "margin": "1rem",
+        "space-xs": "0.5rem",
+        "space-md": "1.5rem",
+        "space-lg": "2rem"
+      },
+      "fontFamily": {
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "headline-xl": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-sm": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-xl-mobile": ["Inter"],
+        "headline-sm": ["Inter"],
+        "numeral-tabular": ["Inter"],
+        "label-md": ["Inter"],
+        "body-md": ["Inter"]
+      },
+      "fontSize": {
+        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+        "body-lg": ["17px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400"}],
+        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+        "headline-sm": ["17px", {"lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+        "numeral-tabular": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+        "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-8"><a class="flex items-center tracking-tight text-on-surface select-none" data-path="home" href="#"><span class="font-headline-lg text-headline-lg font-semibold tracking-tighter">nexo</span><span class="w-1.5 h-1.5 rounded-full bg-primary-container ml-1 mt-1"></span></a><nav class="hidden lg:flex items-center gap-2" data-active-classes="bg-secondary-container text-on-surface font-semibold rounded-lg"><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="celulares" href="#">Celulares</a><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="informatica" href="#">Informática</a><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="eletrodomesticos" href="#">Eletrodomésticos</a><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="acessorios" href="#">Acessórios</a></nav></div><div class="flex-1 max-w-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-secondary text-[20px] pointer-events-none select-none">search</span><input class="w-full h-9 pl-9 pr-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="O que você procura hoje?" type="search"/></div></div><div class="flex items-center gap-4"><a class="hidden sm:flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="minha-conta" href="#"><span>Minha conta</span></a><a class="relative flex items-center justify-center w-9 h-9 rounded-lg hover:bg-surface-container transition-colors text-on-surface" data-path="carrinho" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center justify-center leading-none">2</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+<!-- Top Progress Indicator / Micro Breadcrumb -->
+<div class="flex items-center justify-center gap-3 mb-8 text-secondary font-label-sm text-label-sm">
+<span class="text-on-surface-variant font-medium">Sacola</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface-variant font-medium">Identificação</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-primary font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+        Confirmação
+      </span>
+</div>
+<!-- Main Card Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-6 sm:p-10 lg:p-12 transition-all">
+<!-- Confirmation Header -->
+<div class="flex flex-col items-center text-center max-w-xl mx-auto">
+<!-- Minimal Check Icon Badge -->
+<div class="w-14 h-14 rounded-full bg-primary-fixed/40 flex items-center justify-center mb-6 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[28px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant mb-3">
+<span>Reserva Registrada</span>
+<span class="text-secondary">•</span>
+<span class="font-numeral-tabular text-numeral-tabular font-semibold text-on-surface">#NX-94218</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight">
+          Pedido recebido com sucesso!
+        </h1>
+<p class="mt-3 text-secondary font-body-md text-body-md leading-relaxed">
+          Seu pedido foi registrado em nosso sistema e está sendo preparado pela equipe da loja com todo o cuidado.
+        </p>
+</div>
+<!-- Live Order Meta / Status Module -->
+<div class="mt-10 bg-surface-container-low rounded-xl p-6 sm:p-7">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Status Column -->
+<div class="flex flex-col space-y-2">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-wider">Status do Pedido</span>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-label-sm font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                Aguardando confirmação da loja
+              </span>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm pt-1">
+              Em triagem pela equipe operacional.
+            </p>
+</div>
+<!-- Payment Column -->
+<div class="flex flex-col space-y-2">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-wider">Pagamento</span>
+<span class="text-on-surface font-headline-sm text-headline-sm">
+              Pendente
+            </span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">
+              Pagamento presencial na retirada do produto.
+            </span>
+</div>
+<!-- Pickup Location Column -->
+<div class="flex flex-col space-y-2">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-wider">Ponto de Retirada</span>
+<div class="flex items-start gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary-container mt-0.5">store</span>
+<span class="font-headline-sm text-headline-sm">Loja Jardins</span>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm leading-snug">
+              Av. Paulista, 1000 — Jardins<br/>São Paulo, SP • CEP 01310-100
+            </p>
+</div>
+</div>
+</div>
+<!-- Essential Pickup Notice & Instructions -->
+<div class="mt-8 rounded-xl bg-surface-container p-6 sm:p-7">
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest flex items-center justify-center shrink-0 shadow-sm text-primary">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</div>
+<div class="space-y-3.5 flex-1 min-w-0">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">
+              Orientações importantes para a retirada
+            </h2>
+<div class="space-y-3 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">notifications_active</span>
+<p>
+<strong class="font-semibold text-on-surface">Aguarde a notificação por WhatsApp ou e-mail</strong> antes de comparecer à loja. Avisaremos assim que seu pedido estiver 100% separado e pronto para retirada no balcão.
+                </p>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">badge</span>
+<p>
+                  No balcão de atendimento, apresente o código <span class="font-numeral-tabular text-numeral-tabular font-semibold text-on-surface bg-surface-container-highest px-1.5 py-0.5 rounded">#NX-94218</span> e um documento oficial com foto (RG, CNH ou Passaporte).
+                </p>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">credit_card</span>
+<p>
+<strong class="font-semibold text-on-surface">Formas aceitas no local:</strong> Pix com chave dinâmica, cartões de Crédito e Débito (parcelamento em até 12x) ou Dinheiro em espécie.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Items Reserved Breakdown -->
+<div class="mt-10">
+<div class="flex items-center justify-between pb-3">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-secondary">
+            Resumo dos Itens Reservados
+          </h3>
+<span class="font-label-sm text-label-sm text-secondary">2 itens</span>
+</div>
+<div class="divide-y divide-surface-container space-y-4">
+<!-- Item 1 -->
+<div class="pt-4 flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 min-w-0">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 p-1.5">
+<img class="w-full h-full object-contain rounded" data-alt="Minimalist top view of modern wireless over-ear headphones on smooth neutral stone background with diffused soft studio illumination in cool gray palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXssJCx_Fru6EJ4jxdGJ9dSjgiUxQXvqR6IipBxFJXnN7Xv1I29N5N7e8Abx9W0OjVpU2iGQfJWTPJx_P4TLMx1dQN6llfTUYu0ONHyYtjDfYY4nQheIVSaoJ9dvSdiVACaSRXxNgy-MMMtpDxUwRuntM0xQncyw7sjGJMSkaTjKzGxOL97W_H4dFGrhYCB_kv7rcM1t7qRzIOnEfiYBiUGXb2Y6w60rtgKmngO9wsDypp54IIOyzG"/>
+</div>
+<div class="min-w-0">
+<h4 class="font-body-md text-body-md font-medium text-on-surface truncate">
+                  Fones Sem Fio Nexo SoundPure Active ANC
+                </h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                  Cor: Grafite Especial • Qtd: 1
+                </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-numeral-tabular text-numeral-tabular font-medium text-on-surface">
+                R$ 1.299,00
+              </span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="pt-4 flex items-center justify-between gap-4">
+<div class="flex items-center gap-4 min-w-0">
+<div class="w-14 h-14 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 p-1.5">
+<img class="w-full h-full object-contain rounded" data-alt="Modern precision aluminum charging dock station in matte white finish with sleek power cable on clean neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQBNTFfcnfoCk7ewLcGDZbZNBy5AAevcm674Uk9F5p2Bb0GlQEfqmwSO8ZazDjhqFYTcyYAcXsAHR8zbohb8L9hnmnaKvdRz_u8rFjhjiW8Uhv3tYiusdTPuWnYLHP3IS5819ua7C6mBwIO6cG-3esSuoou5k0fOYnfLzDSCxlrplYdD0EFCUrW6iKMwJMT9sSayaa4wFOWTmYJt3FToE-r-s63RfcDGii5NN4rQWrM9JTlbDMq9jX"/>
+</div>
+<div class="min-w-0">
+<h4 class="font-body-md text-body-md font-medium text-on-surface truncate">
+                  Base de Carregamento Rápido MagPro Dual 35W
+                </h4>
+<p class="font-body-sm text-body-sm text-secondary">
+                  Cor: Branco Polar • Qtd: 1
+                </p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-numeral-tabular text-numeral-tabular font-medium text-on-surface">
+                R$ 589,00
+              </span>
+</div>
+</div>
+</div>
+<!-- Order Total Row -->
+<div class="mt-6 pt-5 bg-surface-container-lowest flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Total Previsto na Retirada</span>
+<span class="font-body-sm text-body-sm text-secondary">Sem taxa de frete ou preparação</span>
+</div>
+<div class="text-right">
+<span class="font-headline-lg text-headline-lg font-semibold text-on-surface tracking-tight font-numeral-tabular">
+              R$ 1.888,00
+            </span>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-5 bg-surface-container-lowest">
+<!-- Print Button Action -->
+<button class="inline-flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-on-surface transition-colors py-2 px-3 rounded-lg hover:bg-surface-container" id="btn-print" onclick="window.print()" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Imprimir comprovante de reserva</span>
+</button>
+<!-- Continue Shopping CTA -->
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 h-10 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-medium transition-all active:scale-[0.98] shadow-sm" data-path="home" href="#">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Continuar comprando</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Micro Support Note -->
+<div class="mt-8 text-center">
+<p class="font-body-sm text-body-sm text-secondary">
+        Dúvidas sobre o pedido? Fale com a equipe pelo WhatsApp <span class="font-numeral-tabular text-on-surface-variant font-medium">(11) 98765-4321</span> ou pelo e-mail <a class="text-primary hover:underline font-medium" href="#">suporte@nexo.com.br</a>
+</p>
+</div>
+</div>
+</div>
+<script>
+  // Quick copy order number functionality if user clicks code badge
+  document.addEventListener('DOMContentLoaded', () => {
+    const codeBadges = document.querySelectorAll('.font-numeral-tabular');
+    codeBadges.forEach(badge => {
+      if (badge.textContent.includes('NX-94218')) {
+        badge.style.cursor = 'pointer';
+        badge.title = 'Clique para copiar o número do pedido';
+        badge.addEventListener('click', () => {
+          navigator.clipboard.writeText('NX-94218').then(() => {
+            const originalText = badge.textContent;
+            badge.textContent = 'Copiado!';
+            setTimeout(() => {
+              badge.textContent = originalText;
+            }, 1800);
+          });
+        });
+      }
+    });
+  });
+</script></main><footer class="w-full bg-surface-container-lowest mt-16 shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-12"><div class="grid grid-cols-1 md:grid-cols-4 gap-10"><div class="space-y-3"><div class="flex items-center tracking-tight text-on-surface"><span class="font-headline-md text-headline-md font-semibold tracking-tighter">nexo</span><span class="w-1.5 h-1.5 rounded-full bg-primary-container ml-1 mt-0.5"></span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-xs">Tecnologia essencial com design refinado. Experiências digitais inteligentes para o seu cotidiano.</p></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-4">Atendimento</h4><ul class="space-y-2.5 font-body-sm text-body-sm"><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="contato" href="#">Contato</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="entrega" href="#">Entrega</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="trocas-e-devolucoes" href="#">Trocas e Devoluções</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacidade" href="#">Privacidade</a></li></ul></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-4">Categorias</h4><ul class="space-y-2.5 font-body-sm text-body-sm"><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="celulares" href="#">Celulares</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="informatica" href="#">Informática</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="eletrodomesticos" href="#">Eletrodomésticos</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="acessorios" href="#">Acessórios</a></li></ul></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-4">Segurança &amp; Pagamento</h4><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">Transações protegidas por criptografia de ponta a ponta. Pix, boleto e principais cartões em até 12x.</p><div class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">lock</span><span class="material-symbols-outlined text-[20px]">verified</span><span class="material-symbols-outlined text-[20px]">shield</span></div></div></div><div class="mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-label-sm text-label-sm text-secondary"><p>© 2025 Nexo Tecnologia Ltda. Todos os direitos reservados.</p><p>CNPJ 00.000.000/0001-00 • Av. Paulista, 1000 - São Paulo, SP</p></div></div></footer></body></html>

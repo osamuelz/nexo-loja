@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nexo Loja Virtual - Tecnologia essencial com design refinado. Retirada na loja física e pagamento na entrega." />
+  <title>Nexo — Tecnologia que facilita seu dia</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Biblioteca Única de Ícones: Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Folha de Estilos Própria (CSS Puro sem Tailwind CDN) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Faixa de Aviso Superior (Ajustada para Retirada na Loja) -->
+  <aside class="top-notice-strip" aria-label="Aviso da Loja">
+    <div class="container top-notice-inner">
+      <div class="notice-pill">
+        <span class="notice-dot"></span>
+        <p>Retirada na loja física com agilidade • Pagamento presencial na retirada</p>
+      </div>
+      <div class="notice-badges">
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>Produtos Originais</span>
+        </span>
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">storefront</span>
+          <span>Atendimento no Balcão</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cabeçalho Principal -->
+  <header class="header-main" role="banner">
+    <div class="container header-inner">
+      
+      <!-- Marca / Logo -->
+      <a href="index.html" class="brand-link" aria-label="Página inicial Nexo">
+        <span>nexo</span><span class="brand-dot"></span>
+      </a>
+
+      <!-- Menu de Navegação por Categorias e Sacola -->
+      <nav class="header-nav" aria-label="Categorias principais">
+        <a href="#catalogo" class="nav-link" data-nav-category="Celulares">Celulares</a>
+        <a href="#catalogo" class="nav-link" data-nav-category="Informática">Informática</a>
+        <a href="#catalogo" class="nav-link" data-nav-category="Eletrodomésticos">Eletrodomésticos</a>
+        <a href="#catalogo" class="nav-link" data-nav-category="Acessórios">Acessórios</a>
+        <a href="carrinho.html" class="nav-link nav-link-cart" aria-label="Acessar sacola de compras">
+          <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+          <span>Sacola</span>
+        </a>
+      </nav>
+
+      <!-- Barra de Busca (Desktop) -->
+      <div class="search-wrapper desktop-search" role="search">
+        <label for="search-input" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);">Buscar produtos</label>
+        <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="O que você procura hoje?"
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- Ações do Cabeçalho -->
+      <div class="header-actions">
+        <a href="carrinho.html" class="btn-cart" id="btn-cart-header" aria-label="Carrinho de compras">
+          <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+          <span class="cart-badge badge-hidden" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Barra de Busca para Dispositivos Móveis -->
+  <div class="mobile-search-bar">
+    <div class="container">
+      <div class="search-wrapper" role="search">
+        <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
+        <input
+          type="search"
+          id="search-input-mobile"
+          class="search-input"
+          placeholder="Buscar no catálogo Nexo..."
+          autocomplete="off"
+        />
+      </div>
+    </div>
+  </div>
+
+  <main id="conteudo-principal">
+
+    <!-- Seção Hero (Destaque Principal) -->
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="hero-tag-highlight">Lançamentos 2025</span>
+              <span>•</span>
+              <span>Linha Nexo Pro &amp; Casa Inteligente</span>
+            </div>
+
+            <h1 id="hero-title" class="hero-title">
+              Tecnologia que facilita seu dia.
+            </h1>
+
+            <p class="hero-description">
+              Do seu próximo celular aos essenciais para sua casa. Design funcional, desempenho descomplicado e a precisão que você merece.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#catalogo" class="btn-primary">
+                <span>Explorar produtos</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+              <a href="#categorias" class="btn-secondary">
+                <span>Ver categorias</span>
+              </a>
+            </div>
+
+            <div class="hero-reassurance">
+              <div class="hero-reassurance-item">
+                <span class="material-symbols-outlined text-[18px]">bolt</span>
+                <span>Retirada rápida no balcão</span>
+              </div>
+              <div class="hero-reassurance-item">
+                <span class="material-symbols-outlined text-[18px]">lock</span>
+                <span>Pagamento presencial</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-card">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbqkO-fdo3jhScFPbU8c2GtWXsuO98xoOO0fN6-esBS3IAdMSiuGiw4-CLHjQt3REh79jGNDRqNX10x9Gl4U3mdZAtqiHYc0K4hTD6tLIp-gXO_aUoDxMPvTEJ8fhjiXPqDq8aWG-dD6Seq_oKKaoCQWGCyngh8lvae60mGW0SkQKXfMgN01GD4ptYxi08OYY66UWmo0S2Yabk2ty5c_h1NLuKGy-os93jbkqiqJC-jGtIXWrXqKtW"
+                alt="Smartphone Nexo One e acessórios em ambiente de estúdio minimalista"
+                class="hero-image"
+              />
+              <div class="hero-card-footer">
+                <span class="hero-footer-label">
+                  <span class="notice-dot"></span>
+                  <span>Nexo One &amp; Pro Series</span>
+                </span>
+                <span class="hero-footer-price">A partir de R$ 1.799,00</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Categorias em Foco -->
+    <section class="categories-section" id="categorias" aria-labelledby="categories-heading">
+      <div class="container">
+        
+        <div class="section-header-row">
+          <div>
+            <span class="section-eyebrow">Navegação Rápida</span>
+            <h2 id="categories-heading" class="section-title">Categorias em foco</h2>
+          </div>
+          <p class="section-subtitle">
+            Selecione uma categoria para filtrar o catálogo instantaneamente ou conferir destaques específicos.
+          </p>
+        </div>
+
+        <!-- Cards Grandes de Categoria -->
+        <div class="categories-grid">
+          <button type="button" class="category-card-btn category-filter-btn is-active" data-category="all" aria-pressed="true">
+            <div class="category-icon-box">
+              <span class="material-symbols-outlined text-[22px]">grid_view</span>
+            </div>
+            <div class="category-text-box">
+              <h3>Todos</h3>
+              <p>12 itens no catálogo</p>
+            </div>
+          </button>
+
+          <button type="button" class="category-card-btn category-filter-btn" data-category="Celulares" aria-pressed="false">
+            <div class="category-icon-box">
+              <span class="material-symbols-outlined text-[22px]">smartphone</span>
+            </div>
+            <div class="category-text-box">
+              <h3>Celulares</h3>
+              <p>Dispositivos móveis</p>
+            </div>
+          </button>
+
+          <button type="button" class="category-card-btn category-filter-btn" data-category="Informática" aria-pressed="false">
+            <div class="category-icon-box">
+              <span class="material-symbols-outlined text-[22px]">memory</span>
+            </div>
+            <div class="category-text-box">
+              <h3>Informática</h3>
+              <p>Hardware &amp; Desempenho</p>
+            </div>
+          </button>
+
+          <button type="button" class="category-card-btn category-filter-btn" data-category="Eletrodomésticos" aria-pressed="false">
+            <div class="category-icon-box">
+              <span class="material-symbols-outlined text-[22px]">kitchen</span>
+            </div>
+            <div class="category-text-box">
+              <h3>Eletrodomésticos</h3>
+              <p>Casa e praticidade</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Linha de Sub-pills Rápidos -->
+        <div class="quick-tags-row">
+          <span class="quick-tags-label">Filtro rápido:</span>
+          <button type="button" class="pill-filter-btn category-filter-btn" data-category="Acessórios" aria-pressed="false">
+            <span class="material-symbols-outlined text-[16px]">headphones</span>
+            <span>Acessórios</span>
+          </button>
+          <button type="button" class="pill-filter-btn category-filter-btn" data-category="Celulares" aria-pressed="false">
+            <span class="material-symbols-outlined text-[16px]">stay_current_portrait</span>
+            <span>Smartphones 5G</span>
+          </button>
+          <button type="button" class="pill-filter-btn category-filter-btn" data-category="Informática" aria-pressed="false">
+            <span class="material-symbols-outlined text-[16px]">speed</span>
+            <span>Upgrade PC</span>
+          </button>
+          <button type="button" class="pill-filter-btn category-filter-btn" data-category="Eletrodomésticos" aria-pressed="false">
+            <span class="material-symbols-outlined text-[16px]">home_app_logo</span>
+            <span>Cozinha Moderna</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Seção do Catálogo Selecionado (Vitrine de 12 Produtos) -->
+    <section class="catalog-section" id="catalogo" aria-labelledby="catalog-heading">
+      <div class="container">
+        
+        <div class="catalog-header">
+          <div>
+            <span class="section-eyebrow">Em Destaque</span>
+            <h2 id="catalog-heading" class="section-title">Catálogo Selecionado</h2>
+          </div>
+
+          <div class="catalog-stats">
+            <span class="product-count-text" id="product-count">Exibindo 12 produtos</span>
+            <div id="active-filter-indicator" class="active-filter-chip" style="display: none;"></div>
+          </div>
+        </div>
+
+        <!-- Grid Onde o JavaScript renderiza os 12 produtos -->
+        <div class="product-grid" id="product-grid" aria-live="polite">
+          <!-- Renderizado dinamicamente por catalogo.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Faixa de Confiança / Políticas da Loja -->
+    <section class="trust-strip" aria-labelledby="trust-heading">
+      <div class="container">
+        <h2 id="trust-heading" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0);">Diferenciais Nexo</h2>
+        <div class="trust-grid">
+          
+          <div class="trust-card">
+            <div class="trust-icon-box">
+              <span class="material-symbols-outlined text-[26px]">storefront</span>
+            </div>
+            <div class="trust-text">
+              <h4>Retirada na Loja Física</h4>
+              <p>Reserve online com rapidez e retire no balcão da loja sem custos adicionais de frete.</p>
+            </div>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-icon-box">
+              <span class="material-symbols-outlined text-[26px]">payments</span>
+            </div>
+            <div class="trust-text">
+              <h4>Pagamento na Retirada</h4>
+              <p>Confira seu item pessoalmente antes de pagar via Pix, cartão ou dinheiro no ato da retirada.</p>
+            </div>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-icon-box">
+              <span class="material-symbols-outlined text-[26px]">support_agent</span>
+            </div>
+            <div class="trust-text">
+              <h4>Atendimento Especializado</h4>
+              <p>Orientação presencial com técnicos prontos para esclarecer dúvidas de compatibilidade e uso.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé Semântico e Limpo -->
+  <footer class="footer-main" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-link">
+            <span>nexo</span><span class="brand-dot"></span>
+          </a>
+          <p class="footer-desc">
+            Tecnologia essencial com design refinado. Catálogo interativo com foco na experiência do cliente, retirada na loja física e atendimento humanizado.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atendimento</h4>
+          <ul class="footer-links">
+            <li><a href="carrinho.html">Minha Sacola / Carrinho</a></li>
+            <li><a href="#catalogo">Horários de Funcionamento</a></li>
+            <li><a href="#catalogo">Balcão de Retirada</a></li>
+            <li><a href="#catalogo">Dúvidas Frequentes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categorias</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogo" data-nav-category="Celulares">Celulares</a></li>
+            <li><a href="#catalogo" data-nav-category="Informática">Informática</a></li>
+            <li><a href="#catalogo" data-nav-category="Eletrodomésticos">Eletrodomésticos</a></li>
+            <li><a href="#catalogo" data-nav-category="Acessórios">Acessórios</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Modalidade e Pagamento</h4>
+          <p class="footer-desc">
+            Retirada no balcão físico. Pagamento realizado presencialmente na conferência do item.
+          </p>
+          <div class="footer-badges">
+            <span class="material-symbols-outlined text-[20px]" title="Ambiente Seguro">lock</span>
+            <span class="material-symbols-outlined text-[20px]" title="Verificado">verified</span>
+            <span class="material-symbols-outlined text-[20px]" title="Segurança">shield</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Nexo Tecnologia. Protótipo funcional de e-commerce desenvolvido com HTML, CSS e JavaScript modular.</p>
+        <p>Dados de estoque e preços fictícios para fins de teste e desenvolvimento.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Principal com Módulos ES6 -->
+  <script type="module" src="assets/js/catalogo.js"></script>
+</body>
+</html>

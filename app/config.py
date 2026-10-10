@@ -61,10 +61,14 @@ class ProductionConfig(Config):
         secret = os.getenv('SECRET_KEY')
         if not secret or secret == 'nexo-dev-secret-key-mude-em-producao':
             raise ValueError(
-                "ERRO DE SEGURANÇA: SECRET_KEY segura e exclusiva deve ser configurada em produção."
+                "ERRO DE SEGURANÇA: A variável de ambiente SECRET_KEY não foi configurada para produção. "
+                "No painel da Vercel, acesse Settings -> Environment Variables e configure SECRET_KEY com uma chave secreta segura."
             )
         if not app.config.get('SQLALCHEMY_DATABASE_URI'):
-            raise ValueError("ERRO DE CONFIGURAÇÃO: DATABASE_URL deve ser definida em produção.")
+            raise ValueError(
+                "ERRO DE CONFIGURAÇÃO: A variável de ambiente DATABASE_URL não foi definida para produção. "
+                "No painel da Vercel, acesse Settings -> Environment Variables e configure DATABASE_URL com a URL do seu PostgreSQL (ex: Neon ou Supabase)."
+            )
 
 
 config_by_name = {

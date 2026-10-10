@@ -12,8 +12,7 @@
 -- ----------------------------------------------------------------------------
 -- 1. Abra o pgAdmin 4 e conecte-se ao seu servidor (com usuário 'postgres').
 -- 2. Clique com botão direito no banco padrão 'postgres' -> 'Query Tool'.
--- 3. Execute cada instrução da PARTE 1 separadamente. CREATE DATABASE não
---    pode ser executado dentro de uma transação com as demais instruções.
+-- 3. Execute a PARTE 1 abaixo (criação de usuário e banco).
 -- 4. No menu lateral esquerdo do pgAdmin, expanda 'Databases', clique com o
 --    botão direito no novo banco 'nexo_db' -> 'Query Tool' (para abrir uma
 --    sessão diretamente conectada ao nexo_db).

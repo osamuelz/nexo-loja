@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "surface-container-highest": "#e4e2e4",
+        "tertiary": "#9b3f00",
+        "on-surface": "#1b1b1d",
+        "on-surface-variant": "#414753",
+        "on-tertiary": "#ffffff",
+        "on-secondary": "#ffffff",
+        "inverse-on-surface": "#f3f0f2",
+        "surface": "#fcf8fb",
+        "secondary": "#5e5e63",
+        "surface-container-low": "#f6f3f5",
+        "on-tertiary-fixed-variant": "#7a3000",
+        "surface-dim": "#dcd9dc",
+        "on-tertiary-container": "#fffaf9",
+        "tertiary-fixed": "#ffdbcb",
+        "on-secondary-fixed-variant": "#46464b",
+        "outline-variant": "#c1c6d6",
+        "on-tertiary-fixed": "#341000",
+        "on-error-container": "#93000a",
+        "secondary-fixed-dim": "#c7c6cb",
+        "tertiary-container": "#c25100",
+        "primary": "#0059b5",
+        "primary-container": "#0071e3",
+        "primary-fixed": "#d7e2ff",
+        "error-container": "#ffdad6",
+        "on-primary-container": "#fcfbff",
+        "on-primary-fixed-variant": "#00458f",
+        "surface-container-high": "#eae7ea",
+        "on-primary-fixed": "#001b3f",
+        "inverse-surface": "#303032",
+        "on-error": "#ffffff",
+        "on-secondary-container": "#626267",
+        "secondary-fixed": "#e3e2e7",
+        "on-secondary-fixed": "#1a1b1f",
+        "primary-fixed-dim": "#abc7ff",
+        "surface-variant": "#e4e2e4",
+        "error": "#ba1a1a",
+        "background": "#fcf8fb",
+        "surface-tint": "#005cbb",
+        "surface-container-lowest": "#ffffff",
+        "surface-container": "#f0edef",
+        "outline": "#717785",
+        "inverse-primary": "#abc7ff",
+        "surface-bright": "#fcf8fb",
+        "tertiary-fixed-dim": "#ffb693",
+        "secondary-container": "#e0dfe4",
+        "on-background": "#1b1b1d",
+        "on-primary": "#ffffff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "gutter": "1rem",
+        "space-sm": "1rem",
+        "gutter-desktop": "1.5rem",
+        "space-xl": "3rem",
+        "margin-desktop": "2rem",
+        "margin": "1rem",
+        "space-xs": "0.5rem",
+        "space-md": "1.5rem",
+        "space-lg": "2rem"
+      },
+      "fontFamily": {
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "headline-xl": ["Inter"],
+        "headline-md": ["Inter"],
+        "body-sm": ["Inter"],
+        "label-sm": ["Inter"],
+        "headline-xl-mobile": ["Inter"],
+        "headline-sm": ["Inter"],
+        "numeral-tabular": ["Inter"],
+        "label-md": ["Inter"],
+        "body-md": ["Inter"]
+      },
+      "fontSize": {
+        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+        "body-lg": ["17px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400"}],
+        "headline-xl": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+        "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+        "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}],
+        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+        "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+        "headline-sm": ["17px", {"lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+        "numeral-tabular": ["15px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "label-md": ["13px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+        "body-md": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}]
+      }
+    }
+  }
+}</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-6"><div class="flex items-center gap-8"><a class="flex items-center tracking-tight text-on-surface select-none" data-path="home" href="#"><span class="font-headline-lg text-headline-lg font-semibold tracking-tighter">nexo</span><span class="w-1.5 h-1.5 rounded-full bg-primary-container ml-1 mt-1"></span></a><nav class="hidden lg:flex items-center gap-2" data-active-classes="bg-secondary-container text-on-surface font-semibold rounded-lg"><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="celulares" href="#">Celulares</a><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="informatica" href="#">Informática</a><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="eletrodomesticos" href="#">Eletrodomésticos</a><a class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="acessorios" href="#">Acessórios</a></nav></div><div class="flex-1 max-w-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-secondary text-[20px] pointer-events-none select-none">search</span><input class="w-full h-9 pl-9 pr-4 rounded-lg bg-surface-container-low text-on-surface placeholder:text-secondary font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary-container transition-all" placeholder="O que você procura hoje?" type="search"/></div></div><div class="flex items-center gap-4"><a class="hidden sm:flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="minha-conta" href="#"><span>Minha conta</span></a><a class="relative flex items-center justify-center w-9 h-9 rounded-lg hover:bg-surface-container transition-colors text-on-surface" data-path="carrinho" href="#"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-semibold flex items-center justify-center leading-none">2</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-background min-h-screen"><div class="flex flex-col w-full pb-20">
+<!-- Micro Breadcrumb & Quick Actions -->
+<div class="max-w-7xl w-full mx-auto px-6 lg:px-12 py-5">
+<nav class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<a class="hover:text-on-surface transition-colors" href="#">Início</a>
+<span class="text-secondary/50 font-label-sm">/</span>
+<a class="hover:text-on-surface transition-colors" href="#">Celulares</a>
+<span class="text-secondary/50 font-label-sm">/</span>
+<span class="text-on-surface font-medium">Smartphone Nexo One</span>
+</nav>
+</div>
+<!-- Main Product Display Stage -->
+<div class="max-w-7xl w-full mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+<!-- Left Column: Gallery (Apple Minimalist Studio) -->
+<div class="lg:col-span-7 flex flex-col gap-5 sticky top-24">
+<!-- Main Viewer Frame -->
+<div class="relative w-full aspect-[4/3] sm:aspect-[16/11] bg-surface-container-lowest rounded-2xl shadow-sm flex items-center justify-center p-8 overflow-hidden group">
+<div class="absolute top-5 left-5 z-10 flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface font-label-sm text-label-sm tracking-wide">Lançamento 2025</span>
+</div>
+<!-- Product Showcase Primary Image -->
+<img alt="Smartphone Nexo One" class="w-full h-full object-contain transition-all duration-500 ease-out group-hover:scale-105" data-alt="Studio product photograph of a modern minimalist flagship smartphone titled Nexo One with edge-to-edge OLED display and matte titanium chassis against an immaculate neutral soft white cyclorama studio background with soft ambient diffuse shadows." id="main-product-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8w2Q-0r7vOx2o5mOBtFJ1OoGKw7sAUQ60SkzsSKojN_fwqcrsBccBWbDc-RgUkfrWKCQlWaRBCaKkZVb-lq_uVRkrzLfiRWq1xQP5zwInJOdCTlFglVZD8rsCyrz4PJ8NNyvtqLfXMAUq5a2k_OQUhqPhYKFEJ1lyHgvjPTjUKIYWXB0ybNZHqhQ8WueH_qw5dQESV_oZ_IrRVYrK3KogsGG_4ZvSZDK9R2zaV6FJnsXj9SRXMTQC"/>
+<button aria-label="Visualização em 360 graus" class="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-surface-container-lowest/90 backdrop-blur-md shadow-sm hover:shadow text-on-surface flex items-center justify-center transition-all hover:scale-105" type="button">
+<span class="material-symbols-outlined text-[20px]">360</span>
+</button>
+</div>
+<!-- Thumbnails Gallery Strip -->
+<div class="grid grid-cols-4 gap-3 sm:gap-4">
+<button class="thumb-btn active aspect-square bg-surface-container-lowest rounded-xl p-2 shadow-sm transition-all focus:outline-none ring-2 ring-primary-container bg-surface-container-low/50" onclick="selectThumb(0)" type="button">
+<img alt="Ângulo frontal" class="w-full h-full object-contain pointer-events-none" data-alt="Angled profile view of titanium smartphone Nexo One emphasizing slim flat frame and precision speaker cutouts in studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3C8sWJiVOPSZgpzAB7Cb8_L7RDdIusLQJu-Ga518XldScdNrZplXpkRm-vpWVhV_naXj-lfbjVZpL3ou4gN5bGWleYEwCuP9xm88guov-L4g9xHNmf7N00xAylntmhQ4mw_p8X06rW0627N_WdmioyZX1g8o3YOQy7MZE3Cyeb0zJUUnePzHs_Z-r9bQn9X54CQfGhKLEZ9X5mHt_00x_wtho1prBsT1dHheHcnufDiUJV0sFgIqA"/>
+</button>
+<button class="thumb-btn aspect-square bg-surface-container-lowest rounded-xl p-2 shadow-sm transition-all focus:outline-none hover:bg-surface-container-low" onclick="selectThumb(1)" type="button">
+<img alt="Traseira do aparelho" class="w-full h-full object-contain pointer-events-none" data-alt="Back panel view of smartphone Nexo One showing dual high-precision camera lenses and frosted satin glass back in sleek titanium color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRKKZFIixWDQZ6k62hMJjo6Y4M6hLvcmVzhtRQT2K3k8c3z7XHqtgd3paAX8KQ5d5oRT9mYZXUmvhz3tRkD3b0Qfr-0aAmLQuG3GTvYMsUG-QJQY5Pjr15zBjAxaj5Zfx_Rddkv9vRcDX2r3EQE24TTA1Y7l-lNhAwAdI0zXYaZKRiiaeazvMNBhMyPWWrKcO1zEOML66UzKg2gMg-Kzggigi45cNXNXK5IIujkhlNv_qKHArqMO5Q"/>
+</button>
+<button class="thumb-btn aspect-square bg-surface-container-lowest rounded-xl p-2 shadow-sm transition-all focus:outline-none hover:bg-surface-container-low" onclick="selectThumb(2)" type="button">
+<img alt="Detalhe da câmera" class="w-full h-full object-contain pointer-events-none" data-alt="Extreme macro close-up of smartphone camera module polished aluminum bezel and sapphire glass lens reflection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfOJJxO3tYU0JxsV4uuAuXRuQcaqeMNzEqQWTxKFU3zdSmBWfz5weUM4zfdNwlyJW_gUcvQNtr9mWDmHAygR89D0vlTSwdl3dRfK-QMZFEqs1IqQrsKZXzngVbNBFt1WBMzdNdolHbd-4dtexZskuMZu2ByO4U09QOp58WJQm4NIn8WHI-w99Gbt-0kWa8eQBC1-kr4VNdfZQ5018xYITWYQRymUzb5N6QDPvnmsvJWHQF6WB-GybM"/>
+</button>
+<button class="thumb-btn aspect-square bg-surface-container-lowest rounded-xl p-2 shadow-sm transition-all focus:outline-none hover:bg-surface-container-low" onclick="selectThumb(3)" type="button">
+<img alt="Conteúdo da caixa" class="w-full h-full object-contain pointer-events-none" data-alt="Minimalist top view of smartphone Nexo One resting horizontally alongside matte braided USB-C cable on warm architectural stone pedestal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCteSIfp7FncRqGjLbKoioXSHGLzVArxKPzbHgC8tPz_KR515A0naR26uEC6b3qSJ335C1XzxdRCSZq1loPCEe2iW_6x8jzHrfSKeQ4wyrtX5wBGm8ClR75TZqr4Kkrsk3qI21q7RtIS1q7KAAOsHrduhjL6E3cUxjdwzr0tJrU51oY9Vsacw_GJ0RVBTiq-nMgZ1RW9CUIHukCusPb1FTopxTNKdTp6mWEvOgdVWr8aVMZxUmwhEU-"/>
+</button>
+</div>
+<!-- Reassurance Feature Ribbon -->
+<div class="grid grid-cols-3 gap-3 pt-3">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Frete Grátis</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Brasil acima de R$ 299</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">12 Meses</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Garantia oficial Nexo</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">sync</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Troca Fácil</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">30 dias sem custo</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Product Spec, Purchasing Matrix & Inventory -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Header Info -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-primary-container font-semibold tracking-wide uppercase">Celulares &amp; Dispositivos</span>
+<div class="flex items-center gap-1 text-tertiary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-numeral-tabular text-numeral-tabular font-semibold text-on-surface">4.9</span>
+<span class="font-label-sm text-label-sm text-secondary">(128 avaliações)</span>
+</div>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight">Smartphone Nexo One</h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Engenharia de precisão com tela OLED Super Retina de 6.1", chip neural A16 e moldura em titânio aeroespacial ultraleve.
+          </p>
+</div>
+<!-- Pricing Card Container -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-sm space-y-2">
+<div class="flex items-baseline gap-3">
+<span class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight" id="price-display">R$ 1.799,00</span>
+<span class="font-body-sm text-body-sm text-secondary line-through">R$ 2.199,00</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-semibold ml-auto">-18% OFF</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            ou em até <strong class="text-on-surface font-semibold">12x de R$ 149,91</strong> sem juros no cartão
+          </p>
+<div class="pt-2 flex items-center gap-1.5 text-primary-container font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span>5% de desconto extra via Pix (R$ 1.709,05)</span>
+</div>
+</div>
+<!-- In-Store Stock Badge (Cupertino Status) -->
+<div class="flex items-center justify-between px-4 py-3 rounded-xl bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Em estoque na Loja Jardins</span>
+</div>
+<span class="font-label-sm text-label-sm text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md font-medium">Pronta entrega</span>
+</div>
+<!-- Selection Matrix: Color Selection -->
+<div class="space-y-3">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-secondary">Cor:</span>
+<span class="font-semibold text-on-surface" id="selected-color-name">Titânio Natural</span>
+</div>
+<div aria-label="Opções de Cor" class="flex items-center gap-3" role="radiogroup">
+<!-- Option 1: Titânio Natural -->
+<button aria-checked="true" class="color-btn relative flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-container-lowest shadow-sm ring-2 ring-primary-container transition-all" onclick="setColor('Titânio Natural', this)" type="button">
+<span class="w-4 h-4 rounded-full bg-[#A8A49F] shadow-inner"></span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Titânio Natural</span>
+</button>
+<!-- Option 2: Preto Espacial -->
+<button aria-checked="false" class="color-btn relative flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-container-lowest shadow-sm hover:bg-surface-container-low transition-all" onclick="setColor('Preto Espacial', this)" type="button">
+<span class="w-4 h-4 rounded-full bg-[#2A2B2E] shadow-inner"></span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Preto Espacial</span>
+</button>
+<!-- Option 3: Prata Estelar -->
+<button aria-checked="false" class="color-btn relative flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-container-lowest shadow-sm hover:bg-surface-container-low transition-all" onclick="setColor('Prata Estelar', this)" type="button">
+<span class="w-4 h-4 rounded-full bg-[#E3E4E6] shadow-inner"></span>
+<span class="font-label-md text-label-md text-on-surface font-medium">Prata Estelar</span>
+</button>
+</div>
+</div>
+<!-- Selection Matrix: Storage Capacity -->
+<div class="space-y-3">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-secondary">Capacidade:</span>
+<span class="font-semibold text-on-surface" id="selected-storage">128 GB</span>
+</div>
+<div aria-label="Opções de Armazenamento" class="grid grid-cols-3 gap-3" role="radiogroup">
+<button class="storage-btn p-3 rounded-xl bg-surface-container-lowest shadow-sm ring-2 ring-primary-container text-left transition-all" onclick="setStorage('128 GB', 'R$ 1.799,00', '149,91', this)" type="button">
+<p class="font-label-md text-label-md font-semibold text-on-surface">128 GB</p>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5">Incluso</p>
+</button>
+<button class="storage-btn p-3 rounded-xl bg-surface-container-lowest shadow-sm hover:bg-surface-container-low text-left transition-all" onclick="setStorage('256 GB', 'R$ 2.099,00', '174,91', this)" type="button">
+<p class="font-label-md text-label-md font-semibold text-on-surface">256 GB</p>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5">+ R$ 300</p>
+</button>
+<button class="storage-btn p-3 rounded-xl bg-surface-container-lowest shadow-sm hover:bg-surface-container-low text-left transition-all" onclick="setStorage('512 GB', 'R$ 2.499,00', '208,25', this)" type="button">
+<p class="font-label-md text-label-md font-semibold text-on-surface">512 GB</p>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5">+ R$ 700</p>
+</button>
+</div>
+</div>
+<!-- Power & Standard Note -->
+<div class="flex items-center gap-3 p-3.5 rounded-xl bg-surface-container-low/70 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">power</span>
+<div class="font-body-sm text-body-sm leading-tight text-on-surface-variant">
+            Alimentação Bivolt Universal (100V–240V). Acompanha cabo trançado USB-C de alta velocidade.
+          </div>
+</div>
+<!-- Quantity & Add to Cart Controls -->
+<div class="space-y-3 pt-2">
+<div class="flex items-center gap-4">
+<!-- Stepper Quantity Counter -->
+<div class="flex items-center h-12 bg-surface-container-lowest rounded-xl shadow-sm px-2 gap-2 shrink-0">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface active:scale-90 transition-transform" onclick="changeQty(-1)" type="button">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="font-numeral-tabular text-numeral-tabular font-semibold text-on-surface w-7 text-center" id="qty-val">1</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center text-on-surface active:scale-90 transition-transform" onclick="changeQty(1)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Primary Cart Action Button -->
+<button class="flex-1 h-12 rounded-xl bg-primary-container hover:bg-primary text-on-primary-container font-headline-sm text-headline-sm flex items-center justify-center gap-2.5 shadow-sm active:scale-[0.98] transition-all" onclick="triggerCartToast()" type="button">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+<span>Adicionar ao carrinho</span>
+</button>
+</div>
+<!-- Fast In-Store Pick-up Banner -->
+<div class="p-4 rounded-xl bg-surface-container-lowest shadow-sm flex items-start gap-3.5">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-on-surface shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md font-semibold text-on-surface">Retirada grátis na Loja Jardins</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Pronto para retirada em até <strong class="text-on-surface font-medium">2 horas</strong> após a confirmação do pagamento. Apresente seu documento digital.
+              </p>
+</div>
+</div>
+</div>
+<!-- Accordions / Structured Product Disclosures -->
+<div class="pt-4 space-y-3">
+<!-- Accordion 1: Highlights & Experience -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<button class="w-full p-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-highlights', 'icon-highlights')" type="button">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Descrição e Destaques</span>
+<span class="material-symbols-outlined text-secondary transition-transform duration-300" id="icon-highlights">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5 space-y-4" id="acc-highlights">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                O Nexo One redefine a experiência móvel essencial. Projetado com linhas puristas e materiais nobres, o corpo em titânio aeroespacial proporciona leveza extrema e resistência superior.
+              </p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+<div class="p-3.5 rounded-xl bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-secondary">Tela</p>
+<p class="font-label-md text-label-md font-semibold text-on-surface mt-0.5">OLED Super 6.1"</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">120Hz ProMotion fluido</p>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-secondary">Processamento</p>
+<p class="font-label-md text-label-md font-semibold text-on-surface mt-0.5">Chip Neural A16</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Eficiência incomparável</p>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low">
+<p class="font-label-sm text-label-sm text-secondary">Chassis</p>
+<p class="font-label-md text-label-md font-semibold text-on-surface mt-0.5">Titânio Aeroespacial</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Vidro fosco acetinado</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 2: Technical Specifications -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden">
+<button class="w-full p-5 flex items-center justify-between text-left focus:outline-none" onclick="toggleAccordion('acc-specs', 'icon-specs')" type="button">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Ficha Técnica Completa</span>
+<span class="material-symbols-outlined text-secondary transition-transform duration-300" id="icon-specs">expand_more</span>
+</button>
+<div class="hidden px-5 pb-5" id="acc-specs">
+<dl class="divide-y divide-surface-container">
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Sistema Operacional</dt>
+<dd class="text-on-surface font-medium">NexoOS 18 (baseado em padrões abertos)</dd>
+</div>
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Câmera Traseira</dt>
+<dd class="text-on-surface font-medium">Dual 48 MP + Ultra-Wide 12 MP c/ OIS</dd>
+</div>
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Câmera Frontal</dt>
+<dd class="text-on-surface font-medium">12 MP TrueFocus com gravação 4K HDR</dd>
+</div>
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Bateria &amp; Autonomia</dt>
+<dd class="text-on-surface font-medium">Até 24h de reprodução contínua de vídeo</dd>
+</div>
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Conectividade</dt>
+<dd class="text-on-surface font-medium">5G Ultra, Wi-Fi 6E, Bluetooth 5.3, NFC</dd>
+</div>
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Dimensões &amp; Peso</dt>
+<dd class="text-on-surface font-medium">146.6 x 70.6 x 7.85 mm • 171g</dd>
+</div>
+<div class="py-2.5 flex justify-between font-body-sm text-body-sm">
+<dt class="text-secondary">Resistência à água</dt>
+<dd class="text-on-surface font-medium">Certificação IP68 (até 6 metros por 30 min)</dd>
+</div>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cart Micro-Feedback Toast Notification -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="cart-toast">
+<div class="bg-inverse-surface text-inverse-on-surface px-5 py-3.5 rounded-xl shadow-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-400 text-[20px]">check_circle</span>
+<div>
+<p class="font-label-md text-label-md font-semibold">Smartphone Nexo One adicionado!</p>
+<p class="font-label-sm text-label-sm text-surface-variant">Pronto para retirar ou enviar.</p>
+</div>
+<a class="ml-3 text-inverse-primary font-label-md text-label-md hover:underline" href="#">Ver sacola</a>
+</div>
+</div>
+<script>
+    function selectThumb(idx) {
+      const buttons = document.querySelectorAll('.thumb-btn');
+      buttons.forEach((btn, i) => {
+        if(i === idx) {
+          btn.classList.add('ring-2', 'ring-primary-container', 'bg-surface-container-low/50');
+          btn.classList.remove('hover:bg-surface-container-low');
+        } else {
+          btn.classList.remove('ring-2', 'ring-primary-container', 'bg-surface-container-low/50');
+          btn.classList.add('hover:bg-surface-container-low');
+        }
+      });
+    }
+
+    function setColor(name, el) {
+      document.getElementById('selected-color-name').innerText = name;
+      document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-primary-container');
+        btn.setAttribute('aria-checked', 'false');
+      });
+      el.classList.add('ring-2', 'ring-primary-container');
+      el.setAttribute('aria-checked', 'true');
+    }
+
+    function setStorage(storage, price, installment, el) {
+      document.getElementById('selected-storage').innerText = storage;
+      document.getElementById('price-display').innerText = price;
+      document.querySelectorAll('.storage-btn').forEach(btn => {
+        btn.classList.remove('ring-2', 'ring-primary-container');
+      });
+      el.classList.add('ring-2', 'ring-primary-container');
+    }
+
+    let qty = 1;
+    function changeQty(diff) {
+      const newQty = qty + diff;
+      if (newQty >= 1 && newQty <= 5) {
+        qty = newQty;
+        document.getElementById('qty-val').innerText = qty;
+      }
+    }
+
+    function toggleAccordion(contentId, iconId) {
+      const content = document.getElementById(contentId);
+      const icon = document.getElementById(iconId);
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    function triggerCartToast() {
+      const toast = document.getElementById('cart-toast');
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest mt-16 shadow-[0_-1px_6px_rgba(0,0,0,0.02)]"><div class="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-12"><div class="grid grid-cols-1 md:grid-cols-4 gap-10"><div class="space-y-3"><div class="flex items-center tracking-tight text-on-surface"><span class="font-headline-md text-headline-md font-semibold tracking-tighter">nexo</span><span class="w-1.5 h-1.5 rounded-full bg-primary-container ml-1 mt-0.5"></span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-xs">Tecnologia essencial com design refinado. Experiências digitais inteligentes para o seu cotidiano.</p></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-4">Atendimento</h4><ul class="space-y-2.5 font-body-sm text-body-sm"><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="contato" href="#">Contato</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="entrega" href="#">Entrega</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="trocas-e-devolucoes" href="#">Trocas e Devoluções</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacidade" href="#">Privacidade</a></li></ul></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-4">Categorias</h4><ul class="space-y-2.5 font-body-sm text-body-sm"><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="celulares" href="#">Celulares</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="informatica" href="#">Informática</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="eletrodomesticos" href="#">Eletrodomésticos</a></li><li data-active-classes="text-on-surface font-medium"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="acessorios" href="#">Acessórios</a></li></ul></div><div><h4 class="font-label-md text-label-md text-on-surface font-semibold mb-4">Segurança &amp; Pagamento</h4><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-4">Transações protegidas por criptografia de ponta a ponta. Pix, boleto e principais cartões em até 12x.</p><div class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">lock</span><span class="material-symbols-outlined text-[20px]">verified</span><span class="material-symbols-outlined text-[20px]">shield</span></div></div></div><div class="mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-label-sm text-label-sm text-secondary"><p>© 2025 Nexo Tecnologia Ltda. Todos os direitos reservados.</p><p>CNPJ 00.000.000/0001-00 • Av. Paulista, 1000 - São Paulo, SP</p></div></div></footer></body></html>

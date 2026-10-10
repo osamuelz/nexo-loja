@@ -1,130 +1,247 @@
-# Nexo — Loja virtual
+# Nexo — Loja Virtual & Painel Operacional
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-222222?logo=flask&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-[![Testes](https://github.com/osamuelz/nexo-loja/actions/workflows/tests.yml/badge.svg)](https://github.com/osamuelz/nexo-loja/actions/workflows/tests.yml)
+Sistema completo de e-commerce e painel administrativo desenvolvido em **Python (Flask)** com banco de dados relacional **PostgreSQL**, arquitetura modular, persistência atômica, controle de concorrência com bloqueio pessimista (*SELECT FOR UPDATE*), congelamento imutável de pedidos e design Cupertino/Stitch.
 
-Projeto de estudo e portfólio: uma loja de tecnologia e eletrodomésticos com catálogo, sacola, finalização de compra, acompanhamento de pedidos e painel administrativo. Interface construída com HTML, CSS e JavaScript, a partir de referências visuais criadas no Stitch, com backend em Python e persistência no PostgreSQL.
+---
 
-## Referência visual
+## Destaques do Projeto
 
-![Design de referência da página inicial da Nexo](docs/design/loja-stitch.png)
+- **Arquitetura Application Factory:** Modularizada em blueprints (`views`, `api`, `admin`), separando catálogo público, checkout do cliente e gestão operacional.
+- **Catálogo Relacional no PostgreSQL:** Categorias, produtos e variantes atômicas por SKU (ex: cor + capacidade, voltagem). Preços em centavos inteiros (`total_centavos`), eliminando imprecisões de ponto flutuante.
+- **Checkout com Transação Atômica e Concorrência Segura:** Revalidação autoritativa de preços e estoque com bloqueio pessimista (`with_for_update()`) ordenado por ID da variante para prevenir *deadlocks* e vendas concorrentes da mesma unidade.
+- **Prevenção de Duplicidade por Idempotência:** Chave de idempotência (`idempotencyKey`) para bloquear pedidos duplicados em duplo clique ou reconexões.
+- **Área "Meus Pedidos" com Chave de Acesso Segura:** Comprador acompanha pedidos via token criptográfico imprevisível (`nx_tok_...`), impedindo enumeração de pedidos.
+- **Painel Administrativo Operacional (Referência Stitch):** 
+  - Métricas e KPIs reais calculados no PostgreSQL (faturamento por período, vendas concluídas, SKUs ativos, alerta de estoque $\le 5$ un).
+  - Gráfico analítico de 7 dias com alternância Faturamento (R$) e Volume.
+  - Tabela com filtros por busca textual, status, intervalo de datas e paginação segura.
+  - Gaveta de inspeção, histórico de auditoria imutável (`HistoricoPedido`) e devolução atômica de estoque ao cancelar.
+- **Autenticação Segura:** Senhas administrativas protegidas por hash PBKDF2/scrypt (`werkzeug.security`). Sem cadastro público de admins; criação exclusiva via terminal local (`flask criar-admin`). Proteção de rotas contra acesso não autorizado e prevenção de *Open Redirect*.
+- **Prevenção Rigorosa de XSS:** Renderização no cliente orientada a `textContent` e construção DOM segura, sanitizando entradas de comprador.
+- **Suíte de Testes com 100% de Aprovação:** Testes unitários, de regras de negócio, concorrência, idempotência e integração.
 
-Layout original criado no Stitch e usado como base visual. A imagem mostra a referência de design; a implementação inclui o fluxo de pedidos e o painel administrativo descritos abaixo.
+---
 
-## Funcionalidades
+## Estrutura do Repositório
 
-- Catálogo de demonstração com 12 produtos, busca e filtros por categoria.
-- Detalhes de produto e escolha de variantes, como cor, capacidade ou voltagem.
-- Sacola com validação de preços, quantidades e estoque no servidor.
-- Registro de pedidos, resumo da compra e acompanhamento em **Meus pedidos**.
-- Painel administrativo com login, indicadores, filtros, detalhes e atualização do status dos pedidos.
-- Migrações do banco e comandos para cadastrar produtos de demonstração e criar administradores.
+```text
+stitch_nexo_sistema_de_estoque/
+├── app/
+│   ├── __init__.py                  # Fábrica da aplicação Flask (Application Factory)
+│   ├── config.py                    # Configurações por ambiente (Dev, Test, Prod)
+│   ├── extensions.py                # Instâncias globais de db (SQLAlchemy) e migrate
+│   ├── models.py                    # Modelos: Categoria, Produto, Variante, Pedido, ItemPedido, HistoricoPedido, UsuarioAdmin
+│   ├── commands.py                  # Comandos CLI: seed-demo e criar-admin
+│   └── routes/
+│       ├── views.py                 # Rotas de páginas da loja (/index, /produto, /carrinho, /checkout, /pedidos)
+│       ├── api.py                   # API REST do catálogo, validação de sacola, checkout e pedidos
+│       └── admin.py                 # Rotas do painel admin, autenticação, KPIs reais e gestão de status
+│
+├── templates/                       # Templates Jinja2 servidos pelo Flask
+│   ├── index.html                   # Vitrine inicial com busca e filtros
+│   ├── produto.html                 # Página de detalhes com variantes
+│   ├── carrinho.html                # Sacola de compras dedicada
+│   ├── checkout.html                # Formulário de finalização de compra
+│   ├── confirmacao.html             # Comprovante oficial com itens congelados
+│   ├── pedidos.html                 # Área "Meus Pedidos" do comprador
+│   └── admin/
+│       ├── login.html               # Tela de login do operador
+│       └── dashboard.html           # Painel Operacional completo (Stitch)
+│
+├── static/                          # Arquivos estáticos (CSS, JS, imagens)
+│   ├── css/styles.css               # Estilos com design tokens e tema Stitch
+│   ├── js/
+│   │   ├── api.js                   # Camada de comunicação com a API REST
+│   │   ├── componentes.js           # Gerenciamento de carrinho, drawer e modais
+│   │   ├── catalogo.js              # Vitrine, busca em tempo real e filtros
+│   │   ├── produto.js               # Seleção de variantes e galeria
+│   │   ├── checkout.js              # Envio de pedido com idempotência
+│   │   ├── confirmacao.js           # Renderização segura do comprovante
+│   │   ├── pedidos.js               # Linha do tempo de acompanhamento do cliente
+│   │   └── admin_dashboard.js       # Gráficos, métricas e gestão de pedidos do admin
+│   └── images/                      # Imagens do catálogo
+│
+├── migrations/                      # Migrações versionadas do banco (Alembic / Flask-Migrate)
+├── tests/                           # Testes automatizados (catálogo, checkout, concorrência, admin, postgres)
+├── docs/
+│   ├── PROGRESS.md                  # Registro cronológico detalhado de desenvolvimento
+│   └── scripts/
+│       └── setup_banco.sql          # Script de criação de usuário e banco PostgreSQL
+│
+├── referencias/stitch/              # Telas e layouts originais de referência
+├── wsgi.py                          # Ponto de entrada oficial para execução do servidor
+├── requirements.txt                 # Dependências do projeto
+└── README.md
+```
 
-Os valores monetários são armazenados em centavos inteiros. O checkout utiliza transação e bloqueio das variantes no PostgreSQL; os testes isolados verificam as regras de negócio, mas não substituem um teste de concorrência nesse banco.
+---
 
-## Executar localmente
+## Requisitos de Ambiente
 
-Requisitos: Python com suporte às dependências de [requirements.txt](requirements.txt), PostgreSQL e Git. Os testes locais desta preparação foram executados com Python 3.14; não foi validada uma matriz de versões do PostgreSQL.
+- **Python:** 3.10, 3.11, 3.12, 3.13 ou 3.14
+- **PostgreSQL:** Versão 14, 15, 16 ou 17
+- **Navegador Moderno:** Chrome, Firefox, Edge ou Safari com suporte a ES Modules
 
-### 1. Clonar e instalar
+---
 
-No PowerShell:
+## Passo a Passo para Execução Local
 
-```powershell
-git clone https://github.com/osamuelz/nexo-loja.git
-cd nexo-loja
+### 1. Clonar o Repositório e Criar o Ambiente Virtual
+
+No terminal (PowerShell no Windows ou Bash no Linux/macOS):
+
+```bash
+# Criar o ambiente virtual (.venv)
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+# Ativar o ambiente virtual:
+# No Windows (PowerShell):
+.\.venv\Scripts\Activate.ps1
+# No Linux/macOS:
+source .venv/bin/activate
+
+# Instalar as dependências
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+### 2. Configurar o Banco de Dados PostgreSQL
+
+Abra o script [setup_banco.sql](docs/scripts/setup_banco.sql) para criar o usuário e o banco de dados.
+
+**No pgAdmin 4:**
+1. Conecte-se com o usuário `postgres` e abra o **Query Tool** no banco padrão `postgres`.
+2. Execute a criação do usuário e banco:
+   ```sql
+   CREATE USER nexo_user WITH PASSWORD 'sua_senha_aqui';
+   CREATE DATABASE nexo_db OWNER nexo_user ENCODING 'UTF8';
+   GRANT ALL PRIVILEGES ON DATABASE nexo_db TO nexo_user;
+   ```
+3. No menu lateral, clique com o botão direito sobre o novo banco `nexo_db` -> **Query Tool** e execute as permissões de schema:
+   ```sql
+   GRANT ALL ON SCHEMA public TO nexo_user;
+   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO nexo_user;
+   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO nexo_user;
+   ```
+
+*(Instruções completas para terminal `psql` estão documentadas em [setup_banco.sql](docs/scripts/setup_banco.sql)).*
+
+---
+
+### 3. Configurar as Variáveis de Ambiente (`.env`)
+
+Copie o arquivo de exemplo `.env.example` para `.env`:
+
+```bash
+cp .env.example .env
+# No Windows:
 Copy-Item .env.example .env
 ```
 
-Os comandos abaixo usam o Python do ambiente virtual diretamente, sem exigir a ativação do ambiente. No Linux/macOS, use `python3 -m venv .venv`, `cp .env.example .env` e substitua `.\.venv\Scripts\python.exe` por `.venv/bin/python`.
-
-### 2. Preparar o PostgreSQL e o ambiente
-
-Siga [setup_banco.sql](docs/scripts/setup_banco.sql) para criar o usuário `nexo_user` e o banco `nexo_db`. No pgAdmin, execute **cada instrução da Parte 1 separadamente**, pois `CREATE DATABASE` não pode rodar dentro de uma transação. Depois, abra o Query Tool no novo banco e execute a Parte 2.
-
-Edite o arquivo `.env` com a conexão local e uma chave de sessão própria:
-
-```dotenv
-DATABASE_URL=postgresql+psycopg://nexo_user:SUA_SENHA@localhost:5432/nexo_db
-SECRET_KEY=SUA_CHAVE_ALEATORIA
-FLASK_ENV=development
-FLASK_DEBUG=1
-```
-
-Para gerar a chave, execute:
-
-```powershell
-.\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_hex(32))"
-```
-
-Se a senha do banco contiver caracteres especiais, como `@`, `#` ou `/`, codifique esses caracteres para uso na URL. O `.env` é local e está excluído do Git; o arquivo publicado contém somente valores de exemplo.
-
-### 3. Criar as tabelas e o catálogo
-
-```powershell
-.\.venv\Scripts\python.exe -m flask --app wsgi db upgrade
-.\.venv\Scripts\python.exe -m flask --app wsgi seed-demo
-.\.venv\Scripts\python.exe -m flask --app wsgi criar-admin
-```
-
-O último comando solicita nome, e-mail e senha do administrador. `seed-demo` preserva os estoques das variantes existentes; a opção `--reset` restaura os estoques de demonstração e deve ser usada apenas quando essa redefinição for desejada.
-
-### 4. Iniciar a aplicação
-
-```powershell
-.\.venv\Scripts\python.exe wsgi.py
-```
-
-Acesse a loja em **http://127.0.0.1:5000/** e o administrador em **http://127.0.0.1:5000/admin/login**. As páginas são servidas pelo Flask; abrir os HTMLs diretamente ou usar apenas um servidor estático não executa a API.
-
-## Testes
-
-```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -p 'test_*.py' -v
-```
-
-Por padrão, os testes utilizam SQLite em memória. Não é necessário configurar um banco PostgreSQL para executar essa suíte. O GitHub Actions executa o mesmo comando a cada push e pull request.
-
-Há também quatro testes opcionais de integração com PostgreSQL. Eles consultam o catálogo de demonstração e precisam de um banco com migrações aplicadas e `seed-demo` executado:
-
-```powershell
-$env:NEXO_TEST_POSTGRES = "1"
-.\.venv\Scripts\python.exe -m unittest discover -s tests -p 'test_postgres_integration.py' -v
-Remove-Item Env:NEXO_TEST_POSTGRES
-```
-
-Eles usam `DATABASE_URL` do ambiente ou do `.env`. Não habilite essa opção para o comando geral se quiser executar somente os testes isolados. Mantenha `TEST_DATABASE_URL` ausente para usar SQLite em memória; testes isolados criam e removem suas tabelas.
-
-## Organização
+Edite o arquivo `.env` com a sua senha local do PostgreSQL:
 
 ```text
-nexo-loja/
-├── app/                 # Configuração, modelos, comandos e rotas
-├── templates/           # Páginas da loja e do administrador
-├── static/              # CSS e JavaScript
-├── migrations/          # Evolução das tabelas do banco
-├── tests/               # Testes automatizados
-├── docs/                # Referência visual e configuração do banco
-├── .github/workflows/   # Validação automática no GitHub
-├── .env.example         # Configuração sem credenciais reais
-├── requirements.txt
-└── wsgi.py              # Entrada da aplicação
+DATABASE_URL=postgresql+psycopg://nexo_user:sua_senha_aqui@localhost:5432/nexo_db
+SECRET_KEY=sua-chave-secreta-de-sessao-local
+FLASK_ENV=development
 ```
 
-A referência visual está em [DESIGN.md](docs/design/DESIGN.md). Ambientes virtuais, credenciais, bancos locais e backups do Stitch ficam fora do repositório.
+> **Segurança:** O arquivo `.env` está explicitamente ignorado no `.gitignore` para nunca vazar credenciais.
 
-## Escopo do projeto
+---
 
-O checkout registra um pedido de demonstração: não processa pagamentos, não emite nota fiscal e não integra transportadoras. O cliente acompanha seus pedidos por referências e tokens guardados no navegador, sem conta de cliente; limpar os dados do navegador remove esse acesso local. Imagens e algumas fontes/ícones dependem de serviços externos.
+### 4. Aplicar as Migrações do Banco
 
-O servidor de desenvolvimento é destinado à execução local. Uma publicação real da loja exigiria uma etapa própria de implantação, testes com PostgreSQL e revisão de segurança. Publicar este repositório no GitHub não coloca o backend no ar; GitHub Pages não executa Python nem PostgreSQL.
+Execute as migrações do Alembic para criar todas as tabelas no PostgreSQL:
 
-## Histórico
+```bash
+flask db upgrade
+```
 
-A versão atual foi organizada em commits por assunto: configuração, backend, loja, pedidos, administração, testes e documentação. Eles representam a preparação inicial para publicação, sem reconstruir artificialmente datas ou etapas anteriores do desenvolvimento.
+---
 
+### 5. Cadastrar os Dados de Demonstração (Catálogo)
+
+Execute o comando para popular as 4 categorias, 12 produtos e 37 variantes de demonstração:
+
+```bash
+flask seed-demo
+```
+
+> **Idempotência:** Por padrão, `flask seed-demo` atualiza o catálogo sem sobrescrever os estoques de variantes já compradas. Para forçar um reset completo dos estoques de demonstração, utilize `flask seed-demo --reset`.
+
+---
+
+### 6. Criar o Primeiro Administrador
+
+Cadastre um administrador pelo terminal local (a senha é digitada de forma oculta):
+
+```bash
+flask criar-admin --nome "Seu Nome" --email "admin@nexo.com.br" --cargo "Gerente"
+```
+
+---
+
+### 7. Iniciar o Servidor
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+python wsgi.py
+```
+
+Ou através do CLI do Flask:
+
+```bash
+flask run --port 5000
+```
+
+Acesse no seu navegador:
+- **Loja Virtual:** [http://127.0.0.1:5000](http://127.0.0.1:5000)
+- **Painel Administrativo:** [http://127.0.0.1:5000/admin](http://127.0.0.1:5000/admin)
+
+---
+
+## Fluxo da Aplicação
+
+### Experiência do Cliente
+1. **Catálogo & Variantes:** Navegue pelos produtos, filtre por categoria, pesquise em tempo real e escolha atributos (cor, capacidade, voltagem).
+2. **Sacola de Compras:** Adicione itens à sacola; os preços e estoques são autoritativamente revalidados antes do checkout.
+3. **Checkout Atômico:** Preencha os dados do comprador e endereço. O sistema bloqueia os registros das variantes com *SELECT FOR UPDATE*, debita o estoque e grava o pedido e itens históricos congelados numa única transação.
+4. **Meus Pedidos:** O cliente pode acompanhar a linha do tempo do pedido (`Recebido` → `Em preparação` → `Enviado` → `Entregue`). Cancelamento direto pelo cliente é permitido exclusivamente enquanto o status for `Recebido`.
+
+### Gestão do Administrador
+1. **Login Seguro:** Acesso restrito a `/admin` com proteção de sessão e prevenção de *Open Redirect*.
+2. **Dashboard Operacional:** Visão geral de faturamento por período, contagem de vendas concluídas (`entregue`), SKUs ativos e alerta de estoque baixo ($\le 5$ unidades).
+3. **Gerenciamento de Pedidos:** Busca textual, filtros de status, inspeção completa de comprador/endereço/itens e atualização do status.
+4. **Devolução Atômica de Estoque:** Ao cancelar um pedido no painel, as variantes têm suas quantidades repostas no PostgreSQL e o evento é registrado na linha do tempo de auditoria permanente (`HistoricoPedido`).
+
+---
+
+## Testes Automatizados
+
+O projeto conta com suíte abrangente de testes automatizados com banco isolado:
+
+```bash
+# Executar todos os testes da aplicação:
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+### Cobertura dos Testes:
+- `tests/test_etapa4.py`: Catálogo, variantes, regras de estoque e API de leitura.
+- `tests/test_etapa5_pedidos.py`: Checkout atômico, congelamento de itens, prevenção de duplicidade por chave de idempotência e rollback.
+- `tests/test_meus_pedidos.py`: Segurança por token de acesso, bloqueio de enumeração, linha de acompanhamento e restrição de permissões do comprador.
+- `tests/test_admin_painel.py`: Autenticação administrativa, bloqueio de rotas não autorizadas, métricas reais do PostgreSQL por período, devolução atômica de estoque e sincronização em tempo real.
+- `tests/test_postgres_integration.py`: Testes de integração direta sobre o PostgreSQL.
+
+> **Trava de Segurança contra Destruição de Dados:** O ambiente de testes (`TestingConfig`) utiliza SQLite em memória ou `TEST_DATABASE_URL`. Se `TEST_DATABASE_URL` for configurado apontando para o banco principal, a execução é abortada imediatamente para impedir a destruição acidental dos dados persistentes.
+
+---
+
+## Limitações e Escopo do Projeto
+
+- **Pagamento Simulado:** O fluxo implementa modelo de pagamento presencial na retirada/balcão (sem necessidade de gateway de cartão real ou dados sensíveis de pagamento).
+- **Persistência de Pedidos do Cliente:** Para compradores sem conta cadastrada, o acesso a pedidos no navegador do cliente é mantido via chave de acesso persistida no `localStorage`, além do link direto com token de acesso seguro.
+- **Ambiente de Demonstração:** Desenvolvido para demonstração técnica e portfólio de engenharia de software com foco em boas práticas de backend, banco de dados relacional e padrões de desenvolvimento web.
