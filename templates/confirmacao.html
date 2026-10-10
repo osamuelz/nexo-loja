@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Confirmação de pedido na Nexo Loja Virtual." />
+  <title>Pedido Confirmado — Nexo</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Folha de Estilos Própria -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+
+  <!-- Faixa de Aviso Superior -->
+  <aside class="top-notice-strip" aria-label="Aviso da Loja">
+    <div class="container top-notice-inner">
+      <div class="notice-pill">
+        <span class="notice-dot" style="background-color: var(--color-success);"></span>
+        <p>Pedido registrado com sucesso no PostgreSQL • Estoque atualizado</p>
+      </div>
+      <div class="notice-badges">
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">check_circle</span>
+          <span>Transação Concluída</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cabeçalho Principal -->
+  <header class="header-main" role="banner">
+    <div class="container header-inner">
+      
+      <!-- Marca / Logo -->
+      <a href="/" class="brand-link" aria-label="Página inicial Nexo">
+        <span>nexo</span><span class="brand-dot"></span>
+      </a>
+
+      <!-- Menu de Navegação -->
+      <nav class="header-nav" aria-label="Navegação da Loja">
+        <a href="/" class="nav-link">Catálogo de Produtos</a>
+        <a href="/pedidos" class="nav-link" aria-label="Meus Pedidos">
+          <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+          <span>Meus Pedidos</span>
+        </a>
+      </nav>
+
+      <!-- Ações do Cabeçalho -->
+      <div class="header-actions">
+        <a href="/pedidos" class="btn-cart" aria-label="Meus Pedidos" title="Meus Pedidos" style="margin-right: 0.25rem;">
+          <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+        </a>
+        <a href="/" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+          <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+          <span>Nova Compra</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="conteudo-principal" style="padding-top: 2.5rem; padding-bottom: 5rem;">
+    <div class="container" style="max-width: 900px;">
+      
+      <!-- Container Dinâmico da Confirmação -->
+      <div id="confirmacao-container" aria-live="polite">
+        <div style="padding: 5rem 1rem; text-align: center; color: var(--color-text-secondary);">
+          <div style="display: inline-block; width: 36px; height: 36px; border: 3px solid var(--color-divider); border-top-color: var(--color-primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 1rem;"></div>
+          <p>Carregando dados oficiais do pedido a partir do servidor PostgreSQL...</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer-main" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 1rem;">
+        <p>© 2025 Nexo Tecnologia. Todos os direitos reservados.</p>
+        <p>Comprovante gerado com valores históricos imutáveis armazenados no banco de dados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="{{ url_for('static', filename='js/confirmacao.js') }}"></script>
+</body>
+</html>
