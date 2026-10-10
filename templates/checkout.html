@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Finalização de compra na Nexo Loja Virtual." />
+  <title>Checkout — Nexo</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Material Symbols Outlined -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Folha de Estilos Própria -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+
+  <!-- Faixa de Aviso Superior -->
+  <aside class="top-notice-strip" aria-label="Aviso da Loja">
+    <div class="container top-notice-inner">
+      <div class="notice-pill">
+        <span class="notice-dot"></span>
+        <p>Checkout Seguro • Pagamento Presencial na Retirada / Balcão</p>
+      </div>
+      <div class="notice-badges">
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">lock</span>
+          <span>Transação Segura</span>
+        </span>
+        <span class="notice-badge-item">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span>Estoque Autoritativo</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cabeçalho Principal -->
+  <header class="header-main" role="banner">
+    <div class="container header-inner">
+      
+      <!-- Marca / Logo -->
+      <a href="/" class="brand-link" aria-label="Página inicial Nexo">
+        <span>nexo</span><span class="brand-dot"></span>
+      </a>
+
+      <!-- Navegação Simples de Checkout -->
+      <nav class="header-nav" aria-label="Etapas da Compra">
+        <a href="/carrinho" class="nav-link" aria-label="Voltar para a sacola">
+          <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+          <span>1. Sacola</span>
+        </a>
+        <span class="nav-link nav-link-active" aria-current="step">
+          <span class="material-symbols-outlined text-[18px]">credit_card</span>
+          <span>2. Checkout</span>
+        </span>
+        <a href="/pedidos" class="nav-link" aria-label="Meus Pedidos">
+          <span class="material-symbols-outlined text-[18px]">receipt_long</span>
+          <span>Meus Pedidos</span>
+        </a>
+      </nav>
+
+      <!-- Ações do Cabeçalho -->
+      <div class="header-actions">
+        <a href="/pedidos" class="btn-cart" aria-label="Meus Pedidos" title="Meus Pedidos" style="margin-right: 0.25rem;">
+          <span class="material-symbols-outlined text-[24px]">receipt_long</span>
+        </a>
+        <a href="/carrinho" class="btn-cart" id="btn-cart-header" aria-label="Ver sacola de compras">
+          <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+          <span class="cart-badge badge-hidden" id="cart-count" aria-live="polite">0</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="conteudo-principal" style="padding-top: 2rem; padding-bottom: 4rem;">
+    <div class="container">
+      
+      <!-- Cabeçalho da Página de Checkout -->
+      <div style="margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-divider-subtle);">
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+          <a href="/carrinho" style="color: var(--color-primary); font-size: 0.8125rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.25rem;">
+            <span class="material-symbols-outlined text-[16px]">arrow_back</span> Voltar para a Sacola
+          </a>
+          <span style="color: var(--color-text-secondary);">•</span>
+          <span class="product-category-eyebrow">Etapa Final</span>
+        </div>
+        <h1 style="font-size: 2.25rem; font-weight: 600; letter-spacing: -0.025em; color: var(--color-text-primary);">
+          Finalização do Pedido
+        </h1>
+      </div>
+
+      <!-- Container Dinâmico do Checkout -->
+      <div id="checkout-container" aria-live="polite">
+        <div style="padding: 4rem 1rem; text-align: center; color: var(--color-text-secondary);">
+          Carregando dados da compra e validando estoque com o PostgreSQL...
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer-main" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 1rem;">
+        <p>© 2025 Nexo Tecnologia. Todos os direitos reservados.</p>
+        <p>Pagamento simulado presencial. Os produtos são reservados no PostgreSQL com confirmação imediata.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+</body>
+</html>
