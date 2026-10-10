@@ -1,49 +1,38 @@
 import os
 import sys
+import urllib.parse
 from pathlib import Path
 
-# Adiciona o diretório raiz ao sys.path para que os módulos 'app' e 'wsgi' sejam encontrados
+# Adiciona o diretório raiz ao sys.path para importações
 ROOT_DIR = Path(__file__).resolve().parent.parent
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-from wsgi import app
+from wsgi import app as flask_app
 
 
-class VercelPathMiddleware:
+def app(environ, start_response):
     """
-    Middleware WSGI para a Vercel.
-    Quando a Vercel reescreve todas as rotas (/(.*)) para /api/index.py,
-    o PATH_INFO original recebido pelo WSGI pode vir como '/api/index.py'.
-    Este middleware recupera o caminho real requisitado pelo usuário a partir
-    do cabeçalho HTTP_X_MATCHED_PATH da Vercel e o restaura no PATH_INFO.
+    Ponto de entrada WSGI para a Vercel.
+    Restaura o caminho original da requisição reescrita pela Vercel através
+    do parâmetro __path injetado nas regras de rewrite do vercel.json.
     """
-    def __init__(self, wsgi_app):
-        self.wsgi_app = wsgi_app
+    query_string = environ.get('QUERY_STRING', '')
+    if '__path=' in query_string:
+        params = urllib.parse.parse_qs(query_string)
+        if '__path' in params:
+            raw_path = params.pop('__path', ['/'])[0]
+            if not raw_path.startswith('/'):
+                raw_path = '/' + raw_path
+            environ['PATH_INFO'] = raw_path
+            new_qs = urllib.parse.urlencode(params, doseq=True)
+            environ['QUERY_STRING'] = new_qs
+            environ['REQUEST_URI'] = raw_path + ('?' + new_qs if new_qs else '')
+            environ['RAW_URI'] = environ['REQUEST_URI']
+    elif environ.get('PATH_INFO') in ('/api/index.py', '/api/index', '/api'):
+        environ['PATH_INFO'] = '/'
 
-    def __call__(self, environ, start_response):
-        matched_path = (
-            environ.get('HTTP_X_MATCHED_PATH') or
-            environ.get('HTTP_X_VERCEL_MATCHED_PATH') or
-            environ.get('HTTP_X_ORIGINAL_URI') or
-            environ.get('HTTP_X_REWRITE_URL')
-        )
-        if matched_path:
-            # Separa query string caso venha anexada ao matched_path
-            if '?' in matched_path:
-                path_part, query_part = matched_path.split('?', 1)
-                environ['PATH_INFO'] = path_part
-                if not environ.get('QUERY_STRING'):
-                    environ['QUERY_STRING'] = query_part
-            else:
-                environ['PATH_INFO'] = matched_path
-        elif environ.get('PATH_INFO') in ('/api/index.py', '/api/index', '/api'):
-            environ['PATH_INFO'] = '/'
+    return flask_app(environ, start_response)
 
-        return self.wsgi_app(environ, start_response)
-
-
-# Aplica o middleware WSGI à aplicação
-app.wsgi_app = VercelPathMiddleware(app.wsgi_app)
 
 __all__ = ['app']

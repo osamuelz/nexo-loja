@@ -852,17 +852,7 @@ def atualizar_status_pedido(numero_pedido):
 @api_bp.app_errorhandler(404)
 def handle_404(err):
     if request.path.startswith('/api/'):
-        safe_env = {
-            k: str(v) for k, v in request.environ.items()
-            if not any(secret in k.upper() for secret in ['PASS', 'SECRET', 'KEY', 'URL', 'TOKEN'])
-        }
-        return jsonify({
-            'sucesso': False,
-            'erro': 'Recurso não encontrado.',
-            'debug_path': request.path,
-            'debug_headers': dict(request.headers),
-            'debug_environ': safe_env
-        }), 404
+        return jsonify({'sucesso': False, 'erro': 'Recurso não encontrado.'}), 404
     return err
 
 
