@@ -43,12 +43,12 @@ def main():
         # 1. Cria todas as tabelas
         print("Criando tabelas no banco de dados...")
         db.create_all()
-        print("✓ Tabelas criadas/verificadas com sucesso!")
+        print("[OK] Tabelas criadas/verificadas com sucesso!")
 
         # 2. Popula os dados demo
         print("\nPopulando catálogo e variantes de demonstração...")
         n_cat, n_prod, n_var = popular_dados_demo(reset_estoques=True)
-        print(f"✓ {n_cat} categorias, {n_prod} produtos e {n_var} variantes cadastradas!")
+        print(f"[OK] {n_cat} categorias, {n_prod} produtos e {n_var} variantes cadastradas!")
 
         # 3. Verifica ou cria usuário administrador
         print("\nVerificando usuário administrador...")
@@ -63,12 +63,12 @@ def main():
             novo_admin.definir_senha('admin123')
             db.session.add(novo_admin)
             db.session.commit()
-            print("✓ Usuário administrador inicial criado:")
+            print("[OK] Usuário administrador inicial criado:")
             print("   E-mail: admin@nexo.com.br")
             print("   Senha:  admin123")
             print("   (Altere essa senha após o primeiro login no painel!)")
         else:
-            print(f"✓ Administrador existente: {admin.email}")
+            print(f"[OK] Administrador existente: {admin.email}")
 
         print("\n" + "=" * 65)
         print(" BANCO DE DADOS PRONTO PARA O DEPLOY NA VERCEL!")
